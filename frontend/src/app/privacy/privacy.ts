@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { MarkdownDirective } from '../../utils/directives/markdown';
 
 @Component({
@@ -7,6 +8,13 @@ import { MarkdownDirective } from '../../utils/directives/markdown';
   templateUrl: './privacy.html',
   styleUrl: './privacy.scss',
 })
-export class Privacy {
-  policy = "## Datenschutzerklärung für SimpleVeg.de"
+export class Privacy implements OnInit {
+  private http = inject(HttpClient);
+  policy = '';
+
+  ngOnInit() {
+    this.http.get('/privacy.md', { responseType: 'text' }).subscribe(content => {
+      this.policy = content;
+    });
+  }
 }
