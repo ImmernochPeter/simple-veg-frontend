@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+
+export interface Recipe {
+  id: number;
+  title: string;
+  description: string;
+  image: string | null;
+}
 
 @Component({
   selector: 'app-recipe-card',
@@ -7,5 +14,5 @@ import { Component } from '@angular/core';
   styleUrl: './recipe-card.scss',
 })
 export class RecipeCard {
-
+  recipe = input.required<Recipe>();
 }

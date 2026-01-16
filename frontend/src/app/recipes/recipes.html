@@ -1,9 +1,17 @@
 <div class="box-60">
-    <h1>Rezepte</h1>
+  <h1>Rezepte</h1>
+
+  @if (loading()) {
+    <div class="loading">Rezepte werden geladen...</div>
+  } @else if (error()) {
+    <div class="error">{{ error() }}</div>
+  } @else {
     <div class="rec-container">
-        <app-recipe-card></app-recipe-card>
-        <app-recipe-card></app-recipe-card>
-        <app-recipe-card></app-recipe-card>
+      @for (recipe of recipes(); track recipe.id) {
+        <app-recipe-card [recipe]="recipe"></app-recipe-card>
+      } @empty {
+        <p>Keine Rezepte gefunden.</p>
+      }
     </div>
-    
+  }
 </div>
