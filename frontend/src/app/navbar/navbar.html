@@ -1,0 +1,62 @@
+<nav class="navbar" [class.menu-open]="isMenuOpen()">
+  <div class="navbar__container">
+    <!-- Logo / Brand -->
+    <a routerLink="/" class="navbar__brand" (click)="closeMenu()">
+      <span class="navbar__title">SimpleVeg.de</span>
+    </a>
+
+    <!-- Burger Menu Button (Mobile) -->
+    <button
+      class="navbar__burger"
+      [class.active]="isMenuOpen()"
+      (click)="toggleMenu()"
+      aria-label="Toggle navigation menu"
+      [attr.aria-expanded]="isMenuOpen()">
+      <!-- Hamburger Icon -->
+      <svg class="navbar__burger-icon navbar__burger-icon--menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+      <!-- Close Icon -->
+      <svg class="navbar__burger-icon navbar__burger-icon--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+        <line x1="6" y1="18" x2="18" y2="6"></line>
+      </svg>
+    </button>
+
+    <!-- Navigation Links -->
+    <div class="navbar__menu" [class.active]="isMenuOpen()">
+      <div class="navbar__links">
+        <a
+          routerLink="/recipes"
+          routerLinkActive="active"
+          class="navbar__link"
+          (click)="closeMenu()">
+          <span class="navbar__link-text">Rezepte</span>
+        </a>
+        <a
+          routerLink="/about"
+          routerLinkActive="active"
+          class="navbar__link"
+          (click)="closeMenu()">
+          <span class="navbar__link-text">Über uns</span>
+        </a>
+        <a
+          routerLink="/contact"
+          routerLinkActive="active"
+          class="navbar__link"
+          (click)="closeMenu()">
+          <span class="navbar__link-text">Infos</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Overlay for mobile menu -->
+    <div
+      class="navbar__overlay"
+      [class.active]="isMenuOpen()"
+      (click)="closeMenu()">
+    </div>
+  </div>
+</nav>
