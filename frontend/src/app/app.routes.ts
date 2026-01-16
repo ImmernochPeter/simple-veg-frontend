@@ -5,12 +5,15 @@ export const routes: Routes = [
   {
     path: '',
     component: Home,
-    children: [
-      {
-        path: 'impressum',
-        loadComponent: () =>
-          import('./impressum/impressum').then((m) => m.Impressum),
-      },
-    ],
+  },
+  {
+    path: 'impressum',
+    loadComponent: () =>
+      import('./impressum/impressum').then((m) => m.Impressum),
+  },
+  {
+    path: 'datenschutz',
+    loadComponent: () =>
+      import('./privacy/privacy').then((m) => m.Privacy),
   },
 ];

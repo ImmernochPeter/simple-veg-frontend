@@ -12,8 +12,7 @@ $breakpoint-mobile: 768px;
         $color-bg-gradient-start 0%,
         $color-bg-gradient-end 100%
     );
-    position:absolute ;
-    bottom: 0;
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: space-evenly;

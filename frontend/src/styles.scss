@@ -1,9 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-
+$breakpoint-mobile: 768px;
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html,
+body,
+app-root {
+  height: 100%;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+}
+
+app-footer {
+  margin-top: auto;
 }
 
 html {
@@ -43,4 +58,15 @@ body {
 }
 a.no-link-style:hover{
   font-weight: bold;
+}
+.box-60{
+  width: 60%;
+  margin: auto;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  @media (max-width: $breakpoint-mobile) {
+    width: 90%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
