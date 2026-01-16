@@ -1,0 +1,243 @@
+// ============================================
+// Variables
+// ============================================
+$color-primary: #0d9488;
+$color-primary-light: #14b8a6;
+$color-accent: #22c55e;
+$color-text-primary: #f8fafc;
+$color-text-secondary: #94a3b8;
+$breakpoint-mobile: 768px;
+
+// ============================================
+// Hero Section
+// ============================================
+.hero {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  padding: 4rem 2rem;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-mobile) {
+    min-height: auto;
+    padding: 2rem 1rem 3rem;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    gap: 4rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      gap: 3rem;
+      text-align: center;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    max-width: 650px;
+
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 100%;
+    }
+  }
+
+  // ============================================
+  // Title with Gradient
+  // ============================================
+  &__title {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
+    background: linear-gradient(
+      135deg,
+      #22c55e 0%,
+      #14b8a6 25%,
+      #0ea5e9 50%,
+      #14b8a6 75%,
+      #22c55e 100%
+    );
+    background-size: 200% 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease infinite;
+    filter: drop-shadow(0 4px 30px rgba(20, 184, 166, 0.3));
+  }
+
+  &__description {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: $color-text-secondary;
+    margin: 0 0 3rem;
+    max-width: 550px;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      max-width: 100%;
+    }
+  }
+
+  // ============================================
+  // Statistics
+  // ============================================
+  &__stats {
+    display: flex;
+    gap: 2rem;
+
+    @media (max-width: $breakpoint-mobile) {
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      gap: 1rem;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-width: 120px;
+    max-width: 140px;
+    aspect-ratio: 1;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba($color-primary-light, 0.3);
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba($color-primary-light, 0.1);
+    }
+
+    @media (max-width: 480px) {
+      min-width: 100px;
+      max-width: 110px;
+      padding: 1rem;
+    }
+  }
+
+  &__stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, $color-text-primary, $color-primary-light);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    white-space: nowrap;
+
+    @media (max-width: 480px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__stat-label {
+    font-size: 0.875rem;
+    color: $color-text-secondary;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  // ============================================
+  // Emoji Section
+  // ============================================
+  &__emojis {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    flex-shrink: 0;
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 280px;
+      height: 280px;
+    }
+  }
+
+  &__emoji {
+    position: absolute;
+    font-size: 6rem;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    user-select: none;
+
+    &:hover {
+      transform: scale(1.15) rotate(10deg);
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 4rem;
+    }
+
+    &--1 {
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: float 6s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+
+    &--2 {
+      bottom: 20%;
+      left: 10%;
+      animation: float 6s ease-in-out infinite;
+      animation-delay: -2s;
+    }
+
+    &--3 {
+      bottom: 20%;
+      right: 10%;
+      animation: float 6s ease-in-out infinite;
+      animation-delay: -4s;
+    }
+  }
+}
+
+// ============================================
+// Animations
+// ============================================
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  75% {
+    transform: translateY(10px) rotate(-3deg);
+  }
+}
+
+// Preserve hover transform for emoji--1
+.hero__emoji--1:hover {
+  transform: translateX(-50%) scale(1.15) rotate(10deg);
+}
